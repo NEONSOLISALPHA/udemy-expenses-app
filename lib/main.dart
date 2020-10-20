@@ -1,5 +1,6 @@
 import './transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +21,7 @@ class MyAppState extends State {
       date: DateTime.now(),
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,6 +30,8 @@ class MyAppState extends State {
           title: Text('Some_App'),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Card(
               child: Text('Chart'),
@@ -39,14 +43,40 @@ class MyAppState extends State {
                     child: Row(
                       children: [
                         Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Colors.purple[300], width: 2),
+                          ),
+                          padding:
+                              EdgeInsets.symmetric(vertical: 3, horizontal: 4),
                           child: Text(
                             tx.amount.toString(),
+                            style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(
+                                  color: Colors.purple[300],
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18),
+                            ),
                           ),
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(tx.description),
-                            Text(tx.date.toString())
+                            Text(
+                              tx.description,
+                              style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 16),
+                              ),
+                            ),
+                            Text(tx.date.toString(),
+                                style: GoogleFonts.montserrat(
+                                  textStyle: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 15),
+                                ))
                           ],
                         )
                       ],
