@@ -24,6 +24,10 @@ class MyAppState extends State {
       date: DateTime.now(),
     ),
   ];
+  void addTransactionFunc(String title, String amount) {
+    print(title);
+    print(amount);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class MyAppState extends State {
               ),
             ),
             AddTransactionCard(
-              null,
+              addTransactionFunc,
               fieldTitle1: 'Title',
               fieldTitle2: 'Amount',
             ),
