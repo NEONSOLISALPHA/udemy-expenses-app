@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+
 import './transaction.dart';
+import './addTransactionCard.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,33 +42,10 @@ class MyAppState extends State {
                 child: Text('Chart'),
               ),
             ),
-            Card(
-              elevation: 3,
-              child: Container(
-                margin: EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Title',
-                        // contentPadding: EdgeInsets.all(5),
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Amount',
-                        // contentPadding: EdgeInsets.all(5),
-                      ),
-                    ),
-                    RaisedButton(
-                      child: Text('Add Transaction'),
-                      onPressed: null,
-                    )
-                  ],
-                ),
-              ),
+            AddTransactionCard(
+              null,
+              fieldTitle1: 'Title',
+              fieldTitle2: 'Amount',
             ),
             Column(
               // mainAxisAlignment: MainAxisAlignment.start,
@@ -105,14 +84,14 @@ class MyAppState extends State {
                               ),
                             ),
                             Text(
-                                DateFormat('dd/MM/yyyy')
-                                    .format(tx.date)
-                                    .toString(),
-                                style: GoogleFonts.montserrat(
-                                  textStyle: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 15),
-                                ))
+                              DateFormat('dd/MM/yyyy')
+                                  .format(tx.date)
+                                  .toString(),
+                              style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(
+                                    fontWeight: FontWeight.w400, fontSize: 15),
+                              ),
+                            )
                           ],
                         )
                       ],
