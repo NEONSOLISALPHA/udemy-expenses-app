@@ -1,6 +1,7 @@
-import './transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import './transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,13 +31,45 @@ class MyAppState extends State {
           title: Text('Some_App'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                child: Text('Chart'),
+              ),
+            ),
             Card(
-              child: Text('Chart'),
+              elevation: 3,
+              child: Container(
+                margin: EdgeInsets.all(10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Title',
+                        // contentPadding: EdgeInsets.all(5),
+                      ),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Amount',
+                        // contentPadding: EdgeInsets.all(5),
+                      ),
+                    ),
+                    RaisedButton(
+                      child: Text('Add Transaction'),
+                      onPressed: null,
+                    )
+                  ],
+                ),
+              ),
             ),
             Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
               children: transactionList.map(
                 (tx) {
                   return Card(
@@ -62,7 +95,7 @@ class MyAppState extends State {
                           ),
                         ),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               tx.description,
@@ -71,7 +104,10 @@ class MyAppState extends State {
                                     fontWeight: FontWeight.w600, fontSize: 16),
                               ),
                             ),
-                            Text(tx.date.toString(),
+                            Text(
+                                DateFormat('dd/MM/yyyy')
+                                    .format(tx.date)
+                                    .toString(),
                                 style: GoogleFonts.montserrat(
                                   textStyle: TextStyle(
                                       fontWeight: FontWeight.w400,
