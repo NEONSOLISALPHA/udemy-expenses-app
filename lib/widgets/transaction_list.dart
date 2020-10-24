@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
-import 'amountBox.dart';
+import 'amount_box.dart';
 
 class TransactionList extends StatelessWidget {
-  final List<Transaction> transactionList;
+  final List<Transaction> userTransactionList;
 
-  TransactionList(this.transactionList);
-
+  TransactionList(this.userTransactionList);
   @override
   Widget build(BuildContext context) {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.start,
-      children: transactionList.map(
+      children: userTransactionList.map(
         (tx) {
           return Card(
             child: Row(

@@ -13,6 +13,9 @@ class AddTransactionCard extends StatelessWidget {
     String val1;
     String val2;
 
+    final field1Controller = TextEditingController();
+    final field2Controller = TextEditingController();
+
     return Card(
       elevation: 3,
       child: Container(
@@ -26,14 +29,14 @@ class AddTransactionCard extends StatelessWidget {
                 labelText: fieldTitle1,
                 // contentPadding: EdgeInsets.all(5),
               ),
-              onChanged: (value) => val1 = value,
+              controller: field1Controller,
             ),
             TextField(
               decoration: InputDecoration(
                 labelText: fieldTitle2,
                 // contentPadding: EdgeInsets.all(5),
               ),
-              onChanged: (value) => val2 = value,
+              controller: field2Controller,
             ),
             RaisedButton(
               child: Text('Add Transaction'),

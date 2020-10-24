@@ -1,40 +1,17 @@
+import './widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
-import 'models/transaction.dart';
-import 'widgets/addTransactionCard.dart';
-import 'widgets/transactionList.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return MyAppState();
-  }
-}
-
-class MyAppState extends State {
-  final transactionList = <Transaction>[
-    Transaction(
-      amount: 400.0,
-      description: 'Somthing',
-      date: DateTime.now(),
-    ),
-  ];
-  void addTransactionFunc(String title, String amount) {
-    print(title);
-    print(amount);
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Some_App'),
+          title: Text('Some_App'), // title of the app.
         ),
         body: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
@@ -46,12 +23,7 @@ class MyAppState extends State {
                 child: Text('Chart'),
               ),
             ),
-            AddTransactionCard(
-              addTransactionFunc,
-              fieldTitle1: 'Title',
-              fieldTitle2: 'Amount',
-            ),
-            TransactionList(transactionList),
+            UserTransactions(),
           ],
         ),
       ),
