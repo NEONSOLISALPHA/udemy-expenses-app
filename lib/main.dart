@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
-import './transaction.dart';
+import 'models/transaction.dart';
 import './addTransactionCard.dart';
 import './transactionList.dart';
 
@@ -51,7 +51,7 @@ class MyAppState extends State {
               fieldTitle1: 'Title',
               fieldTitle2: 'Amount',
             ),
-            TransactionList(transactionList)
+            TransactionList(transactionList),
           ],
         ),
       ),
