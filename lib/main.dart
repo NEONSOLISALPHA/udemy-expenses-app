@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
 import 'models/transaction.dart';
-import './addTransactionCard.dart';
-import './transactionList.dart';
+import 'widgets/addTransactionCard.dart';
+import 'widgets/transactionList.dart';
 
 void main() {
   runApp(MyApp());
