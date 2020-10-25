@@ -22,7 +22,7 @@ class TransactionList extends StatelessWidget {
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      tx.description,
+                      tx.title,
                       style: GoogleFonts.montserrat(
                         textStyle: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 16),

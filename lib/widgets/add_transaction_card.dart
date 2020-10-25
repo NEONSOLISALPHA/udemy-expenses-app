@@ -2,19 +2,13 @@ import 'package:flutter/material.dart';
 
 class AddTransactionCard extends StatelessWidget {
   final Function addTransactionButtonFunc;
-  final String fieldTitle1;
-  final String fieldTitle2;
 
-  AddTransactionCard(this.addTransactionButtonFunc,
-      {this.fieldTitle1, this.fieldTitle2});
+  AddTransactionCard(this.addTransactionButtonFunc);
 
   @override
   Widget build(BuildContext context) {
-    String val1;
-    String val2;
-
-    final field1Controller = TextEditingController();
-    final field2Controller = TextEditingController();
+    final titleController = TextEditingController();
+    final amountController = TextEditingController();
 
     return Card(
       elevation: 3,
@@ -26,21 +20,22 @@ class AddTransactionCard extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: fieldTitle1,
+                labelText: 'Title',
                 // contentPadding: EdgeInsets.all(5),
               ),
-              controller: field1Controller,
+              controller: titleController,
             ),
             TextField(
               decoration: InputDecoration(
-                labelText: fieldTitle2,
+                labelText: 'Amount',
                 // contentPadding: EdgeInsets.all(5),
               ),
-              controller: field2Controller,
+              controller: amountController,
             ),
             RaisedButton(
               child: Text('Add Transaction'),
-              onPressed: () => addTransactionButtonFunc(val1, val2),
+              onPressed: () => addTransactionButtonFunc(
+                  double.parse(amountController.text), titleController.text),
             )
           ],
         ),
