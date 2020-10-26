@@ -15,11 +15,15 @@ class TransactionList extends StatelessWidget {
       child: ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
+            elevation: 5,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             child: Row(
               children: [
-                AmountBox('₹ ${userTransactionList[index].amount}'),
+                AmountBox(
+                    '₹ ${userTransactionList[index].amount.toStringAsFixed(2)}'),
                 Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       userTransactionList[index].title,
