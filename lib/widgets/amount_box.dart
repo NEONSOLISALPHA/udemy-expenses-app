@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AmountBox extends StatelessWidget {
   final String amount; // amount is a string with a currency symbol with it
@@ -10,17 +9,15 @@ class AmountBox extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.purple[300], width: 2),
+        border: Border.all(color: Theme.of(context).primaryColor, width: 2),
       ),
       padding: EdgeInsets.symmetric(vertical: 3, horizontal: 4),
       child: Text(
         amount,
-        style: GoogleFonts.montserrat(
-          textStyle: TextStyle(
-              color: Colors.purple[300],
-              fontWeight: FontWeight.w700,
-              fontSize: 18),
-        ),
+        style: Theme.of(context)
+            .textTheme
+            .headline6
+            .apply(color: Theme.of(context).primaryColor),
       ),
     );
   }

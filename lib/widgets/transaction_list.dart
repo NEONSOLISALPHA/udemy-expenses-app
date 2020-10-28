@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 import 'amount_box.dart';
@@ -25,21 +24,18 @@ class TransactionList extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      userTransactionList[index].title,
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 16),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.55,
+                      child: Text(
+                        userTransactionList[index].title,
+                        style: Theme.of(context).textTheme.subtitle1,
                       ),
                     ),
                     Text(
                       DateFormat('dd/MM/yyyy')
                           .format(userTransactionList[index].date)
                           .toString(),
-                      style: GoogleFonts.montserrat(
-                        textStyle: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 15),
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2,
                     )
                   ],
                 )
