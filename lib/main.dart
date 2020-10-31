@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import './widgets/add_transaction_card.dart';
 import './widgets/transaction_list.dart';
+import './widgets/chart.dart';
+
 import './models/transaction.dart';
 
 void main() {
@@ -15,18 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _userTransactionslist = <Transaction>[
-    Transaction(
-        amount: 400.0,
-        title: 'just some money i wasted',
-        date: DateTime.now(),
-        id: DateTime.now().toString()),
-    Transaction(
-        amount: 800.0,
-        title: 'not much to say',
-        date: DateTime.now(),
-        id: DateTime.now().toString())
-  ];
+  final List<Transaction> _userTransactionslist = [];
 
   void _addNewTransaction(double txAmount, String txTitle) {
     final newTx = Transaction(
@@ -37,6 +28,18 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _userTransactionslist.add(newTx);
     });
+  }
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactionslist.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(
+            days: 7,
+          ),
+        ),
+      );
+    }).toList();
   }
 
   void showAddTransaction(BuildContext ctx) {
@@ -61,7 +64,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Some_App'),
+          title: Text('Expenses App'),
           actions: [
             Builder(
               builder: (context) => IconButton(
@@ -76,13 +79,29 @@ class _MyAppState extends State<MyApp> {
             // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Chart(_recentTransactions),
               Container(
-                width: double.infinity,
-                child: Card(
-                  child: Text('Chart'),
-                ),
-              ),
-              TransactionList(_userTransactionslist),
+                  child: _userTransactionslist.isEmpty
+                      ? Column(
+                          children: [
+                            Text(
+                              'No Transactions Added Yet!',
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            SizedBox(
+                              height: 40,
+                              width: double.infinity,
+                            ),
+                            Container(
+                              height: 500,
+                              child: Image.asset(
+                                'assets/images/waiting.png',
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          ],
+                        )
+                      : TransactionList(_userTransactionslist)),
             ],
           ),
         ),

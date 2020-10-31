@@ -12,7 +12,8 @@ class TransactionList extends StatelessWidget {
     return Container(
       height: 500,
       child: ListView.builder(
-        itemBuilder: (ctx, index) {
+        itemBuilder: (_, index) {
+          // itembuilder automatically passes in context(here, '_') as an argument.
           return Card(
             elevation: 5,
             shape:
@@ -25,10 +26,11 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.55,
-                      child: Text(
-                        userTransactionList[index].title,
-                        style: Theme.of(context).textTheme.subtitle1,
+                      child: FittedBox(
+                        child: Text(
+                          userTransactionList[index].title,
+                          style: Theme.of(context).textTheme.subtitle1,
+                        ),
                       ),
                     ),
                     Text(
