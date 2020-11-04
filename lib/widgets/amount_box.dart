@@ -11,13 +11,13 @@ class AmountBox extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).primaryColor, width: 2),
       ),
-      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 4),
+      padding: EdgeInsets.symmetric(horizontal: 4),
       child: Text(
         amount,
         style: Theme.of(context)
             .textTheme
             .headline6
-            .apply(color: Theme.of(context).primaryColor),
+            .apply(color: Theme.of(context).primaryColor, fontSizeFactor: 1.2),
       ),
     );
   }
